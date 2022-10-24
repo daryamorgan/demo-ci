@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// pluginManager.withPlugin 'com.google.cloud.tools.jib', {
+// 	jib {
+// 		from {
+// 			image = 'azul/zulu-openjdk:17-jre'
+// 		}
+// 		to {
+// 			image = 'daryamorgen/demo',
+// 			auth {
+// 				username = property('daryamorgen')
+// 				password = property('sipwip-zyCdu9-qydjeq')
+// 			}
+// 		}
+// 	}
+// }
+
