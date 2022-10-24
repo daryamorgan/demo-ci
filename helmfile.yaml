@@ -1,0 +1,14 @@
+helmDefaults:
+  wait: true
+  # restores previous state in case of failed release (default false)
+  atomic: true
+  force: false
+  timeout: 300
+  historyMax: 5
+
+releases:
+  - name: demo
+    namespace: demo
+    chart: ./charts/demo
+    # values:
+    #   - helm/values.yaml
