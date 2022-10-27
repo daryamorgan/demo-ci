@@ -6,7 +6,8 @@ RUN ./gradlew build
 FROM azul/zulu-openjdk-alpine:17.0.3-jre
 COPY --from=builder /app/build/libs/*.jar /app/
 WORKDIR /app
-# RUN addgroup -S demo && adduser -S demouser -G demo
-# USER demouser
+RUN addgroup -S javauser && adduser -S javauser -G javauser
+RUN chown -R javauser:javauser /app
+USER javauser
 ENTRYPOINT ["java", "-jar", "demo.jar"]
-# EXPOSE 8080
+EXPOSE 8080
