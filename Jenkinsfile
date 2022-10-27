@@ -49,7 +49,7 @@ spec:
                     VERSION = sh(script: 'git log -1 --format=\'%h.%ad\' --date=format:%Y%m%d-%H%M | cat', returnStdout: true).trim()
                     BRANCH = repo.GIT_BRANCH.take(20).replaceAll('/', '_')
                     if (BRANCH != 'master') {
-                        VERSION += "-${branch}"
+                        VERSION += "-${BRANCH}"
                     }
                     sh "echo 'Building revision: ${VERSION}'"
                 }
